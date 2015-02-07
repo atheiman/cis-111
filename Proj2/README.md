@@ -1,10 +1,8 @@
 # Exam Score Calculator
 
-CIS 111 Project 2
-
+CIS 111 Project 2</br>
 Feb 27, 2015
 
-`javac Proj2.java && java Proj2`
 
 
 Usage from command line:
