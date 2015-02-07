@@ -1,5 +1,0 @@
-PROJECT TITLE: American Gothic ASCII Art
-PURPOSE OF PROJECT: CIS 111 Project 2
-VERSION or DATE: Feb 27, 2015
-HOW TO START THIS PROJECT: javac Proj2.java && java Proj2
-AUTHORS: Austin Heiman
