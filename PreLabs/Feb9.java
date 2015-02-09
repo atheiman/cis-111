@@ -4,6 +4,10 @@
 * - Ask the user to enter a (whole) number
 * - Print the number that is twice as big as the input
 *
+* usage:
+*
+*     javac Feb9.java && java Feb9
+*
 * @author Austin Heiman
 * @version Prelab Feb 9
 */
@@ -29,5 +33,4 @@ class Feb9 {
             }
         } while (bError);
     }
-
 }
