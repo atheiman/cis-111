@@ -1,0 +1,26 @@
+Variables, Operations, Output, User Input
+
+- The lab should be done in pairs
+
+Part 1:
+- Copy Lab3.java, and paste it into a new BlueJ file
+- Try to compile it -- what's wrong?
+- Fix all the errors until the program compiles.
+- The program is SUPPOSED to get two numbers from the user and print their average.  Does it work?
+- Make changes to the program until it works correctly.
+
+
+Part 2:
+- Start a new BlueJ project with a class and main method
+- Ask the user to enter a bill amount at a restaurant(as a double)
+- Suppose the sales tax is 8.5% and you want to tip 20% after
+    adding in the tax
+- Calculate and print what the final cost after both tax and tip
+- Format it to have just 2 decimal places
+- You may want to use the following to format it
+
+import java.text.*;
+...
+DecimalFormat df = new DecimalFormat("#0.00");
+...
+System.out.println(df.format(some double value));
