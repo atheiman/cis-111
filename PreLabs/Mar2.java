@@ -1,28 +1,27 @@
 /*
- * If you haven't already done, so:
- * - Watch the lecture on "Designing Loops"
- * - Read the lecture notes on "Designing Loops"
- *
- * On a sheet of paper, write an algorithm that will:
+ * Assignment:
  *
  * - Ask the user for a positive whole number
  * - Use a while loop to add up all even numbers less than or equal to the user input
  *     (so if the user enteres 100, add all the even numbers from 2 up to 100)
  *
- * - First, make a list of the variables you need. I suggest:
- *     - The user input number (call it bound)
- *     - A total to help you add together the numbers
- *     - The current number you wish to add (start it at 2)
  *
- * - You can just get the even numbers by starting your current number at 2 and
- *   adding 2 to it each time inside the loop.
+ *
+ * Algorithm:
+ *
+ *   1. take positive integer input as bound
+ *   2. while counter is less than or equal to bound
+ *     a. add counter to total
+ *     b. add 2 to counter
+ *
+ *
  *
  * usage:
  *
  *     javac Mar2.java && java Mar2
  *
  * @author Austin Heiman
- * @version Prelab Feb 9
+ * @version Prelab Mar 2
  */
 
 import java.util.Scanner;
@@ -42,18 +41,18 @@ class Mar2 {
                 if (bound > 0)
                     errorBool = false;
                 else
-                    System.out.println(errorStr);
+                    System.out.println(errorStr);    // input was negative
             }
             catch (Exception e) {
-                System.out.println(errorStr);
+                System.out.println(errorStr);    // input was not an Int
             }
         } while (errorBool);
 
-        do {
-            if (counter % 2 == 0)
-                total += counter;
-            counter++;
-        } while (counter <= bound);
+        counter = 2;
+        while (counter <= bound) {
+            total += counter;
+            counter += 2;
+        }
 
         System.out.printf("Total of even numbers from 2 to %d: %d\n", bound, total);
     }
