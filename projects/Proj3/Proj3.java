@@ -31,8 +31,8 @@ import java.util.Scanner;
 
 class Proj3 {
     public static void main(String[] args) {
-        double courses, hours, hoursTotal, points, pointsTotal, gpa;
-        courses = hours = hoursTotal = points = pointsTotal = gpa = 0;
+        double courses, hours, hoursTotal, points;
+        courses = hours = hoursTotal = points = 0;
 
         DecimalFormat df = new DecimalFormat("#0.00");
 
@@ -51,21 +51,17 @@ class Proj3 {
 
         // get points for each course
         for (int i = 0; i < courses; i++) {
-            hours = points = 0;
+            hours = 0;
 
             hours = getPosInt(String.format(hoursPrompt, i + 1), coursesErr);
             hoursTotal += hours;
-
-            points += getPoints(String.format(letterPrompt, i + 1), letterErr);
-            pointsTotal += points * hours;
+            points += hours * getPoints(String.format(letterPrompt, i + 1),
+                                        letterErr);
         }
 
         System.out.println();
 
-        // GPA = points / hours
-        gpa = pointsTotal / hoursTotal;
-
-        System.out.println(outString + df.format(gpa));
+        System.out.println(outString + df.format(points / hoursTotal));
     }
 
 
