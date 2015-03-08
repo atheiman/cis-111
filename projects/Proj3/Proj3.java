@@ -53,12 +53,10 @@ class Proj3 {
         for (int i = 0; i < courses; i++) {
             hours = points = 0;
 
-            hours = getPosInt(String.format(hoursPrompt, i + 1),
-                              coursesErr);
+            hours = getPosInt(String.format(hoursPrompt, i + 1), coursesErr);
             hoursTotal += hours;
 
-            points += getPoints(String.format(letterPrompt, i + 1),
-                                letterErr);
+            points += getPoints(String.format(letterPrompt, i + 1), letterErr);
             pointsTotal += points * hours;
         }
 
