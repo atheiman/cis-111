@@ -1,3 +1,5 @@
+// Austin Heiman | March 9 Prelab | Mon 3:30pm
+//
 // On a sheet of paper, write a Java program with a for-loop that will:
 //
 // - Ask the user for 10 different integers (use a for-loop to count 10 times)
