@@ -18,6 +18,12 @@
  *
  * @author Austin Heiman
  * @version Project 3 due Mar 27
+ *
+ * Write a Java program that asks the user for how many courses they took. You
+ * will then get the number of hours and letter grade for each course; then, you
+ * will calculate and print the corresponding GPA. Here is a sample run of the
+ * program:
+ *
  */
 
 import java.text.*;
