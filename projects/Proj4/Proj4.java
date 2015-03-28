@@ -1,67 +1,93 @@
 /**
- * Asks the user how many courses they took. Receives input for number of
- * courses, then hours and letter grade for each course. Calculates and prints
- * the corresponding GPA. Here is a sample run of the program:
+ * Gets 10 test scores from the user and then asks for a letter grade. Then
+ * prints out how many of those scores would receive that letter grade. Here is
+ * a sample run of the program:
  *
- *     How many courses did you take? 4
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
+ *     Enter score: 75
  *
- *     Course (1): How many hours? 3
- *     Course (1): Letter grade? D
- *     Course (2): How many hours? 5
- *     Course (2): Letter grade? B
- *     Course (3): How many hours? 3
- *     Course (3): Letter grade? A
- *     Course (4): How many hours? 4
- *     Course (4): Letter grade? B
- *
- *     GPA: 2.80
+ *     Which grade would you like to count? B
+ *     There are 2 Bs
  *
  * @author Austin Heiman
- * @version Project 3 due Mar 27
- *
- * Write a Java program that asks the user for how many courses they took. You
- * will then get the number of hours and letter grade for each course; then, you
- * will calculate and print the corresponding GPA. Here is a sample run of the
- * program:
- *
+ * @version Project 4 due Apr 10
  */
 
 import java.text.*;
 import java.util.Scanner;
+import java.util.Arrays;
 
-class Proj3 {
+class Proj4 {
     public static void main(String[] args) {
-        double courses, hours, hoursTotal, points;
-        courses = hours = hoursTotal = points = 0;
+        int[] scoresArray = new int[10];
+        int[] scoreRange = new int[2];
+        String grade;
+        int numGrades = 0;
 
-        DecimalFormat df = new DecimalFormat("#0.00");
-
-        String coursesErr = "ERROR - Expected courses as positive int.";
-        String hoursErr = "ERROR - Expected hours as int.";
+        String scorePrompt = "Enter score %d: ";
+        String letterPrompt = "Which grade would you like to count? ";
+        String scoreErr = "ERROR - Expected score as int.";
         String letterErr = "ERROR - Expected 'A', 'B', 'C', 'D', or 'F'.";
-        String coursesPrompt = "How many courses did you take? ";
-        String hoursPrompt = "Course (%d): How many hours? ";
-        String letterPrompt = "Course (%d): Letter grade? ";
-        String outString = "GPA: ";
 
-        // get number of courses
-        courses = getPosInt(coursesPrompt, coursesErr);
-
-        System.out.println();
-
-        // get points for each course
-        for (int i = 0; i < courses; i++) {
-            hours = 0;
-
-            hours = getPosInt(String.format(hoursPrompt, i + 1), coursesErr);
-            hoursTotal += hours;
-            points += hours * getPoints(String.format(letterPrompt, i + 1),
-                                        letterErr);
+        // get scores
+        for (int i = 0; i < scoresArray.length; i++) {
+            scoresArray[i] = getInt(String.format(scorePrompt, i + 1),
+                                    scoreErr);
         }
 
         System.out.println();
 
-        System.out.println(outString + df.format(points / hoursTotal));
+        grade = getGrade(letterPrompt, letterErr);
+
+        switch (grade) {
+            case "A":
+                scoreRange[0] = 90;
+                scoreRange[1] = 200;
+                break;
+            case "B":
+                scoreRange[0] = 80;
+                scoreRange[1] = 90;
+                break;
+            case "C":
+                scoreRange[0] = 70;
+                scoreRange[1] = 80;
+                break;
+            case "D":
+                scoreRange[0] = 60;
+                scoreRange[1] = 70;
+                break;
+            case "F":
+                scoreRange[0] = -100;
+                scoreRange[1] = 60;
+                break;
+            default:
+                break;
+        }
+
+        // get count of grade instances
+        for (int i = 0; i < scoresArray.length; i++) {
+            if ((scoresArray[i] >= scoreRange[0]) &&
+                (scoresArray[i] < scoreRange[1]))
+                numGrades++;
+        }
+
+        // print the summary string
+        if (numGrades == 1)
+            System.out.println(String.format("There is %d %s",
+                                             numGrades,
+                                             grade));
+        else
+            System.out.println(String.format("There are %d %ss",
+                                             numGrades,
+                                             grade));
     }
 
 
@@ -94,42 +120,21 @@ class Proj3 {
     }
 
 
-    private static int getPoints(String prompt, String error) {
-        boolean errorBool = false;
-        int points = 0;
-        String input;
+    private static String getGrade(String prompt, String error) {
+        boolean errorBool = true;
+        String[] gradesArray = {"A", "B", "C", "D", "F"};
+        String grade = "";
         do {
-            errorBool = false;
-            System.out.print(prompt);
-            Scanner in = new Scanner(System.in);
             try {
-                input = Character.toString(in.next(".").charAt(0)).toUpperCase();
-                switch (input) {
-                    case "A":
-                        points = 4;
-                        break;
-                    case "B":
-                        points = 3;
-                        break;
-                    case "C":
-                        points = 2;
-                        break;
-                    case "D":
-                        points = 1;
-                        break;
-                    case "F":
-                        points = 0;
-                        break;
-                    default:
-                        errorBool = true;
-                        break;
-                }
+                Scanner in = new Scanner(System.in);
+                System.out.print(prompt);
+                grade = Character.toString(in.next(".").charAt(0)).toUpperCase();
+                if (Arrays.asList(gradesArray).contains(grade))
+                    errorBool = false;
             } catch (Exception e) {
-                errorBool = true;
+                System.out.println(error);    // input was not a grade
             }
-            if (errorBool)
-                System.out.println(error);
         } while (errorBool);
-        return points;
+        return grade;
     }
 }
