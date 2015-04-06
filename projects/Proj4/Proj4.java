@@ -3,19 +3,20 @@
  * prints out how many of those scores would receive that letter grade. Here is
  * a sample run of the program:
  *
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
- *     Enter score: 75
+ *     $ javac Proj4.java && java Proj4
+ *     Enter score 1: 75
+ *     Enter score 2: 85
+ *     Enter score 3: 95
+ *     Enter score 4: 65
+ *     Enter score 5: 105
+ *     Enter score 6: 45
+ *     Enter score 7: 99
+ *     Enter score 8: 90
+ *     Enter score 9: 115
+ *     Enter score 10: 60
  *
- *     Which grade would you like to count? B
- *     There are 2 Bs
+ *     Which grade would you like to count? A
+ *     There are 5 As
  *
  * @author Austin Heiman
  * @version Project 4 due Apr 10
@@ -50,7 +51,7 @@ class Proj4 {
         switch (grade) {
             case "A":
                 scoreRange[0] = 90;
-                scoreRange[1] = 200;
+                scoreRange[1] = Integer.MAX_VALUE;
                 break;
             case "B":
                 scoreRange[0] = 80;
@@ -65,7 +66,7 @@ class Proj4 {
                 scoreRange[1] = 70;
                 break;
             case "F":
-                scoreRange[0] = -100;
+                scoreRange[0] = Integer.MIN_VALUE;
                 scoreRange[1] = 60;
                 break;
             default:
